@@ -1,126 +1,72 @@
-package mainMenu;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
-/**
-* @generated
-*/
-public class mainMenu extends Menu {
-    
-    /**
-    * @generated
-    */
-    private String title;
-    
-    /**
-    * @generated
-    */
-    private Button play;
-    
-    /**
-    * @generated
-    */
-    private Button clean;
-    
-    /**
-    * @generated
-    */
-    private Button feed;
-    
-    /**
-    * @generated
-    */
-    private Button upSkill;
-    
-    
-    /**
-    * @generated
-    */
-    private Button button;
-    
-    
-    /**
-    * @generated
-    */
-    private String getTitle() {
-        return this.title;
+public class mainMenu extends JPanel {
+
+    public mainMenu() {
+        setBackground(Color.BLUE);
+        add(new JLabel("mainMenu"));
+        JButton Feed = new JButton("Feed");
+        Feed.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    
+                }
+            }
+        );
+        add(Feed);
+
+        JButton Clean = new JButton("Clean");
+        Clean.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    
+                }
+            }
+        );
+        add(Clean);
+
+        JButton Play = new JButton("Play");
+        Play.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    
+                }
+            }
+        );
+        add(Play);
+
+        JButton Skill = new JButton("Skill");
+        Skill.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    
+                }
+            }
+        );
+        add(Skill);
+
+
+        JButton Status = new JButton("Status");
+        Status.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    
+                }
+            }
+        );
+        add(Status);
     }
-    
-    /**
-    * @generated
-    */
-    private String setTitle(String title) {
-        this.title = title;
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(300, 300);
     }
-    
-    /**
-    * @generated
-    */
-    private Button getPlay() {
-        return this.play;
-    }
-    
-    /**
-    * @generated
-    */
-    private Button setPlay(Button play) {
-        this.play = play;
-    }
-    
-    /**
-    * @generated
-    */
-    private Button getClean() {
-        return this.clean;
-    }
-    
-    /**
-    * @generated
-    */
-    private Button setClean(Button clean) {
-        this.clean = clean;
-    }
-    
-    /**
-    * @generated
-    */
-    private Button getFeed() {
-        return this.feed;
-    }
-    
-    /**
-    * @generated
-    */
-    private Button setFeed(Button feed) {
-        this.feed = feed;
-    }
-    
-    /**
-    * @generated
-    */
-    private Button getUpSkill() {
-        return this.upSkill;
-    }
-    
-    /**
-    * @generated
-    */
-    private Button setUpSkill(Button upSkill) {
-        this.upSkill = upSkill;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    public Button getButton() {
-        return this.button;
-    }
-    
-    /**
-    * @generated
-    */
-    public Button setButton(Button button) {
-        this.button = button;
-    }
-    
 }

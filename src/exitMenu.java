@@ -1,15 +1,15 @@
 
 import java.awt.Color;
 import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class startMenu extends JPanel {
+public class exitMenu extends JPanel {
 
-    public startMenu() {
-        setBackground(Color.GREEN);
-        add(new JLabel("startMenu"));
-       
+    public exitMenu() {
+        setBackground(Color.RED);
+        add(new JLabel("exitMenu"));
     }
 
     @Override
@@ -17,4 +17,3 @@ public class startMenu extends JPanel {
         return new Dimension(300, 300);
     }
 }
-
