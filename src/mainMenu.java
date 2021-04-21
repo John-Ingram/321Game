@@ -9,11 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Container;
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,41 +17,33 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 // TODO: Javadoc comments
+// TODO: Update the button images and pet with better art.
+// TODO: Update the background.
 
 public class mainMenu extends JPanel{
 
-    private JButton Feed;
-    private JButton Clean;
-    private JButton Play;
-    private JButton Skill;
-    private JButton half;
-    private JButton one;
-    private JButton two;
     private BufferedImage image; 
 
 
     public mainMenu() {
         setBackground(Color.WHITE);
         add(new JLabel("Main Menu"));
-
-        createControls();
-       // Layout();
         
+        JLabel picLabel = PetImage();
+        createControls(picLabel);
     }
 
-    public void createControls(){
-        // TODO: Integrate the pet's needs with the buttons.
-        // TODO: Add a placement holder for the pet's photo.
+    public void createControls(JLabel picLabel){
+        // TODO: Integrate the pet's needs with the buttons. Pet class has to be done first.
 
         JButton Feed = new JButton("Feed");
         Feed.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    
                 }
             }
         );
-        add(Feed);
+
 
         JButton Clean = new JButton("Clean");
         Clean.addActionListener(
@@ -65,7 +53,7 @@ public class mainMenu extends JPanel{
                 }
             }
         );
-        add(Clean);
+ 
 
         JButton Play = new JButton("Play");
         Play.addActionListener(
@@ -75,7 +63,7 @@ public class mainMenu extends JPanel{
                 }
             }
         );
-        add(Play);
+
 
         JButton Skill = new JButton("Skill");
         Skill.addActionListener(
@@ -85,9 +73,9 @@ public class mainMenu extends JPanel{
                 }
             }
         );
-        add(Skill);
 
-        // TODO: Make these buttons actually change the time speeds.
+
+        // TODO: Make these buttons actually change the time speed. Pet class has to be done first.
         JButton one = new JButton("1x");
         one.addActionListener(
             new ActionListener(){
@@ -96,7 +84,7 @@ public class mainMenu extends JPanel{
                 }
             }
         );
-        add(one);
+ 
 
         JButton half = new JButton("0.5x");
         half.addActionListener(
@@ -106,7 +94,7 @@ public class mainMenu extends JPanel{
                 }
             }
         );
-        add(half);
+ 
 
         JButton two = new JButton("2x");
         two.addActionListener(
@@ -116,9 +104,31 @@ public class mainMenu extends JPanel{
                 }
             }
         );
-        add(two);
+ 
 
-        // TODO: Insert a placeholder image for our pet.
+        JPanel needs = new JPanel();
+        needs.add(Feed);
+        needs.add(Skill);
+        needs.add(Clean);
+        needs.add(Play);
+        setLayout(new BorderLayout());
+        add(needs, BorderLayout.NORTH);
+
+        
+        JPanel time = new JPanel();
+        time.add(half);
+        time.add(one);
+        time.add(two);
+        add(time, BorderLayout.SOUTH);
+
+        JPanel pet = new JPanel();
+        pet.add(picLabel);
+        add(pet, BorderLayout.CENTER);
+        
+    } 
+
+    public JLabel PetImage(){
+
         try {
             image = ImageIO.read(new File("resources/placeholder_pet.png"));
         } catch (IOException e1) {
@@ -133,30 +143,11 @@ public class mainMenu extends JPanel{
         icon = new ImageIcon(new_img);
 
         JLabel picLabel = new JLabel(icon);
-        add(picLabel);
-
-    } 
-    /*
-    public void Layout(){
-        JPanel needs = new JPanel();
-        needs.add(Skill);
-        needs.add(Play);
-        needs.add(Clean);
-        needs.add(Feed);
-
-        JPanel time = new JPanel();
-        time.add(half);
-        time.add(one);
-        time.add(two);
-
-        Container pane = frame.getContentPane();
-        pane.add(needs, BorderLayout.NORTH);
-        pane.add(time, BorderLayout.SOUTH); 
-
+        return picLabel;
+       
     }
-    */
-
-
+    
+    
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
