@@ -1,4 +1,4 @@
-package Pet;
+import javax.swing.JPanel;
 
 // TODO: Javadoc comments.
 // TODO: Have the pet's needs be affected by time and the time controls (create an aging function basically).
@@ -10,7 +10,15 @@ package Pet;
 /**
 * @generated
 */
-public class Pet extends Drawable {
+public class Pet extends JPanel {
+    
+    public Pet(String name){
+	this.setPetName(name);
+	this.setHygene((float) 0);
+	this.setHunger((float) 0);
+	this.setHappiness((float) 0);
+	this.setSkill((float) 0);
+    }
     
     /**
     * @generated
@@ -42,70 +50,70 @@ public class Pet extends Drawable {
     /**
     * @generated
     */
-    private String getName() {
+    public String getPetName() {
         return this.name;
     }
     
     /**
     * @generated
     */
-    private String setName(String name) {
+    private void setPetName(String name) {
         this.name = name;
     }
     
     /**
     * @generated
     */
-    private Float getHunger() {
+    public Float getHunger() {
         return this.hunger;
     }
     
     /**
     * @generated
     */
-    private Float setHunger(Float hunger) {
+    private void setHunger(Float hunger) {
         this.hunger = hunger;
     }
     
     /**
     * @generated
     */
-    private Float getSkill() {
+    public Float getSkill() {
         return this.skill;
     }
     
     /**
     * @generated
     */
-    private Float setSkill(Float skill) {
+    private void setSkill(Float skill) {
         this.skill = skill;
     }
     
     /**
     * @generated
     */
-    private Float getHygene() {
+    public Float getHygene() {
         return this.hygene;
     }
     
     /**
     * @generated
     */
-    private Float setHygene(Float hygene) {
+    private void setHygene(Float hygene) {
         this.hygene = hygene;
     }
     
     /**
     * @generated
     */
-    private Float getHappiness() {
+    public Float getHappiness() {
         return this.happiness;
     }
     
     /**
     * @generated
     */
-    private Float setHappiness(Float happiness) {
+    private void setHappiness(Float happiness) {
         this.happiness = happiness;
     }
     
@@ -116,31 +124,31 @@ public class Pet extends Drawable {
     /**
     * @generated
     */
-    protected playWithPet() {
-        //TODO
+    protected void playWithPet() {
+	this.setHappiness(this.getHappiness() + 1);	
     }
     /**
     * @generated
     */
-    protected cleanPet() {
-        //TODO
+    protected void cleanPet() {
+	this.setHygene(this.getHygene() + 1);
     }
     /**
     * @generated
     */
-    protected feedPet() {
-        //TODO
+    protected void feedPet() {
+	this.setHunger(this.getHunger() + 1);
     }
     /**
     * @generated
     */
-    protected upSkill() {
-        //TODO
+    protected void upSkill() {
+	this.setSkill(this.getSkill() +1);
     }
     /**
     * @generated
     */
-    protected checkStatus() {
+    protected void checkStatus() {
         //TODO
     }
     

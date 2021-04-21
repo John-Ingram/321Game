@@ -37,11 +37,13 @@ public class GameFrame extends JFrame{
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
+	Pet pet = new Pet("PetNamePlaceholder");
+	
         // creating the cards
         start = new startMenu();
         main = new mainMenu();
         exit = new exitMenu();
-        status = new statusMenu();
+        status = new statusMenu(pet);
 
         // adding the cards
         mainPanel.add(start, "start");

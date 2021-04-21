@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.lang.System;
 
 // TODO: Javadoc comments
 
@@ -20,6 +21,7 @@ public class exitMenu extends JPanel {
         Yes.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
+		    System.exit(0); 
                 }
             }
         );
