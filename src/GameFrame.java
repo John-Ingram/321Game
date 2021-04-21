@@ -63,6 +63,8 @@ public class GameFrame extends JFrame{
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     cardLayout.show(mainPanel, "start");
+                    startGame.setVisible(false);
+                    startStatus.setVisible(true);
                 }
             }
         );
@@ -86,6 +88,7 @@ public class GameFrame extends JFrame{
         );
 
         startStatus = new JButton("STATUS");
+        startStatus.setVisible(false);
         startStatus.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
