@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -9,17 +11,22 @@ import javax.swing.SwingUtilities;
 
 public class GameFrame extends JFrame{
 
-    CardLayout cardLayout;
-    JPanel mainPanel;
-    startMenu start;
-    mainMenu main;
-    exitMenu exit;
-    statusMenu status;
+    private CardLayout cardLayout;
+    private JPanel mainPanel;
+    private startMenu start;
+    private mainMenu main;
+    private exitMenu exit;
+    private statusMenu status;
+    private JButton startGame;
+    private JButton startMain;
+    private JButton startStatus;
+    private JButton startExit;
     
 
     public GameFrame() {
         createCardLayout();
-        addNavigation();
+        createNavigation();
+        setLayout();
     }
 
     public void createCardLayout(){
@@ -40,8 +47,8 @@ public class GameFrame extends JFrame{
         mainPanel.add(status, "status");
     }
 
-    public void addNavigation(){
-        JButton startGame = new JButton("START");
+    public void createNavigation(){
+        startGame = new JButton("START");
         startGame.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
@@ -50,7 +57,7 @@ public class GameFrame extends JFrame{
             }
         );
 
-        JButton startMain = new JButton("MAIN");
+        startMain = new JButton("MAIN");
         startMain.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
@@ -59,7 +66,7 @@ public class GameFrame extends JFrame{
             }
         );
 
-        JButton startExit = new JButton("EXIT");
+        startExit = new JButton("EXIT");
         startExit.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
@@ -68,7 +75,7 @@ public class GameFrame extends JFrame{
             }  
         );
 
-        JButton startStatus = new JButton("STATUS");
+        startStatus = new JButton("STATUS");
         startStatus.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
@@ -76,16 +83,27 @@ public class GameFrame extends JFrame{
                 }
             }  
         );
+    
+    }
 
-        add(mainPanel);
-        add(startGame, BorderLayout.NORTH);
-        add(startMain, BorderLayout.SOUTH);
-        add(startExit, BorderLayout.WEST);
-        add(startStatus, BorderLayout.EAST);
+    public void setLayout(){
+        JPanel navigation = new JPanel();
+        navigation.add(startGame);
+        navigation.add(startMain);
+        navigation.add(startStatus);
+
+        JPanel exit = new JPanel();
+        exit.add(startExit);
+
+        Container pane = getContentPane();
+        pane.add(mainPanel, BorderLayout.CENTER);
+        pane.add(navigation, BorderLayout.NORTH);
+        pane.add(exit, BorderLayout.SOUTH);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setLocationByPlatform(true);
+        setPreferredSize(new Dimension(600, 600));
         setVisible(true);
     }
     
