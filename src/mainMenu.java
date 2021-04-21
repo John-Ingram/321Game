@@ -12,6 +12,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+// TODO: Javadoc comments
 
 public class mainMenu extends JPanel {
 
@@ -29,6 +30,8 @@ public class mainMenu extends JPanel {
     }
 
     public void createControls(){
+        // TODO: Integrate the pet's needs with the buttons.
+        
         JButton Feed = new JButton("Feed");
         Feed.addActionListener(
             new ActionListener(){
@@ -69,6 +72,7 @@ public class mainMenu extends JPanel {
         );
         add(Skill);
 
+        // TODO: Add buttons that will change the time speed
     } 
 
     public void Layout(){

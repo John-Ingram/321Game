@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+// TODO: Javadoc comments
+
 public class GameFrame extends JFrame{
 
     private CardLayout cardLayout;
@@ -48,6 +50,10 @@ public class GameFrame extends JFrame{
     }
 
     public void createNavigation(){
+
+        // TODO: Figure out how to hide the "START" button once you are in the game
+        // TODO: Figure out how to hide the "STATUS" button until you are in the game
+
         startGame = new JButton("START");
         startGame.addActionListener(
             new ActionListener(){

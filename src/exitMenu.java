@@ -7,18 +7,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// TODO: Javadoc comments
+
 
 public class exitMenu extends JPanel {
 
     public exitMenu() {
         setBackground(Color.RED);
         add(new JLabel("Are you sure you want to exit?"));
-
+        // TODO: Make this button actually work
         JButton Yes = new JButton("YES");
         Yes.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    // exit program, button currently nonfunctional
                 }
             }
         );

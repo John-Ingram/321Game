@@ -1,5 +1,11 @@
 package Pet;
 
+// TODO: Javadoc comments.
+// TODO: Have the pet's needs be affected by time and the time controls (create an aging function basically).
+// TODO: Have a prompt to create the pet's name if the pet has no name.
+// TODO: Have the pet's status be affected by playing, cleaning, etc.
+// TODO: Hook up the pet's stats to the buttons in the mainMenu class once this class is done.
+
 
 /**
 * @generated
