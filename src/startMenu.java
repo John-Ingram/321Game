@@ -35,7 +35,7 @@ public class startMenu extends JPanel {
 
         //not sure if we need this since there should be an "x" on the popup menu
         JButton End = new JButton("End Game");
-        Start.addActionListener(
+        End.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     
