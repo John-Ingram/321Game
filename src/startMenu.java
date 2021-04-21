@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import javax.swing.*;
 
+// TODO: Javadoc comments
 
 public class startMenu extends JPanel {
 

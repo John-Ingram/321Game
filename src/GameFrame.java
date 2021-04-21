@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 // TODO: Javadoc comments
+// TODO: Finalize what the dimensions of the game should be.
 
 public class GameFrame extends JFrame{
 
