@@ -7,9 +7,7 @@ import javax.swing.JPanel;
 // TODO: Hook up the pet's stats to the buttons in the mainMenu class once this class is done.
 
 
-/**
-* @generated
-*/
+@SuppressWarnings("serial")
 public class Pet extends JPanel {
     
     public Pet(String name){

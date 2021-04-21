@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 // TODO: Javadoc comments
 
+@SuppressWarnings("serial")
 public class statusMenu extends JPanel{
     // TODO: Integrate the pet's status with the panel
     // TODO: Create a template for what the panel will look like

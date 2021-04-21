@@ -10,7 +10,7 @@ import java.lang.System;
 
 // TODO: Javadoc comments
 
-
+@SuppressWarnings("serial")
 public class exitMenu extends JPanel {
 
     public exitMenu() {

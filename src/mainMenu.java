@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 // TODO: Update the button images and pet with better art.
 // TODO: Update the background.
 
+@SuppressWarnings("serial")
 public class mainMenu extends JPanel{
 
     private BufferedImage image; 

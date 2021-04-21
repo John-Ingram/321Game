@@ -7,7 +7,7 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 // TODO: Javadoc comments
-
+@SuppressWarnings("serial")
 public class startMenu extends JPanel {
 
     private JButton Start;

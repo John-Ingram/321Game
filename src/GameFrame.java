@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 // TODO: Javadoc comments
 // TODO: Finalize what the dimensions of the game should be.
 
+@SuppressWarnings("serial")
 public class GameFrame extends JFrame{
 
     private CardLayout cardLayout;
