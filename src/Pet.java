@@ -1,6 +1,5 @@
 import javax.swing.JPanel;
 
-
 // TODO: Javadoc comments.
 // TODO: Have a prompt to create the pet's name if the pet has no name.
 // TODO: Have the pet's status be affected by playing, cleaning, etc.
