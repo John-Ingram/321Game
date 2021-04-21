@@ -42,7 +42,7 @@ public class GameFrame extends JFrame{
 	
         // creating the cards
         start = new startMenu();
-        main = new mainMenu();
+        main = new mainMenu(pet);
         exit = new exitMenu();
         status = new statusMenu(pet);
 
@@ -92,6 +92,7 @@ public class GameFrame extends JFrame{
         startStatus.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
+		    status.updateStatus();
                     cardLayout.show(mainPanel, "status");
                 }
             }  
