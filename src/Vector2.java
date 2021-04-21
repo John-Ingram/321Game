@@ -1,4 +1,3 @@
-package Vector2;
 // TODO: Javadoc comments
 
 /**
@@ -28,7 +27,7 @@ public class Vector2 {
     /**
     * @generated
     */
-    public Float setMagX(Float magX) {
+    public void setMagX(Float magX) {
         this.magX = magX;
     }
     
@@ -42,7 +41,7 @@ public class Vector2 {
     /**
     * @generated
     */
-    public Float setMagY(Float magY) {
+    public void setMagY(Float magY) {
         this.magY = magY;
     }
     
