@@ -25,8 +25,10 @@ public class mainMenu extends JPanel{
 
     private BufferedImage image; 
 
+    private Pet pet;
 
-    public mainMenu() {
+    public mainMenu(Pet pet) {
+	this.pet = pet;
         setBackground(Color.WHITE);
         add(new JLabel("Main Menu"));
         
@@ -41,6 +43,7 @@ public class mainMenu extends JPanel{
         Feed.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
+		    pet.feedPet();
                 }
             }
         );
@@ -50,7 +53,7 @@ public class mainMenu extends JPanel{
         Clean.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    
+		    pet.cleanPet(); 
                 }
             }
         );
@@ -60,7 +63,7 @@ public class mainMenu extends JPanel{
         Play.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    
+                    pet.playWithPet();
                 }
             }
         );
@@ -70,7 +73,7 @@ public class mainMenu extends JPanel{
         Skill.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    
+		    pet.upSkill();  
                 }
             }
         );
