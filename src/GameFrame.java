@@ -1,7 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -37,7 +39,7 @@ public class GameFrame extends JFrame{
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-	Pet pet = new Pet("PetNamePlaceholder");
+	    Pet pet = new Pet("PetNamePlaceholder");
 	
         // creating the cards
         start = new startMenu();
@@ -66,6 +68,9 @@ public class GameFrame extends JFrame{
                 }
             }
         );
+        startMain.setFont(new Font("Dialog", Font.BOLD, 10));
+        startMain.setBorderPainted(false);
+        startMain.setBackground(new Color(0xA3D8C8));
 
         startExit = new JButton("EXIT");
         startExit.addActionListener(
@@ -75,27 +80,34 @@ public class GameFrame extends JFrame{
                 }
             }  
         );
+        startExit.setFont(new Font("Dialog", Font.BOLD, 10));
+        startExit.setBorderPainted(false);
+        startExit.setBackground(new Color(0xFC8080));
 
         startStatus = new JButton("STATUS");
         startStatus.setVisible(false);
         startStatus.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-		    status.updateStatus();
+		            status.updateStatus();
                     cardLayout.show(mainPanel, "status");
                 }
             }  
         );
-    
+        startStatus.setFont(new Font("Dialog", Font.BOLD, 10));
+        startStatus.setBorderPainted(false);
+        startStatus.setBackground(new Color(0xA3D8C8));
     }
 
     public void setLayout(){
         JPanel navigation = new JPanel();
         navigation.add(startMain);
         navigation.add(startStatus);
+        navigation.setBackground(new Color(0xFEFEFE));
 
         JPanel exit = new JPanel();
         exit.add(startExit);
+        exit.setBackground(new Color(0xFEFEFE));
 
         Container pane = getContentPane();
         pane.add(mainPanel, BorderLayout.CENTER);
@@ -105,7 +117,7 @@ public class GameFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setLocationByPlatform(true);
-        setPreferredSize(new Dimension(600, 600));
+        setPreferredSize(new Dimension(300, 300));
         setVisible(true);
         startStatus.setVisible(false);
         startMain.setVisible(false);

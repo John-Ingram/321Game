@@ -1,6 +1,9 @@
+// attribution
+// <a href="https://www.vecteezy.com/free-vector/dog">Dog Vectors by Vecteezy</a>
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +34,7 @@ public class mainMenu extends JPanel{
     private final Date createdDate = new java.util.Date();
 
     public mainMenu(Pet pet) {
-	this.pet = pet;
+	    this.pet = pet;
         setBackground(Color.WHITE);
         add(new JLabel("Main Menu"));
         
@@ -50,6 +53,9 @@ public class mainMenu extends JPanel{
                 }
             }
         );
+        Feed.setFont(new Font("Dialog", Font.BOLD, 10));
+        Feed.setBorderPainted(false);
+        Feed.setBackground(new Color(0xEE9458));
 
 
         JButton Clean = new JButton("Clean");
@@ -60,6 +66,9 @@ public class mainMenu extends JPanel{
                 }
             }
         );
+        Clean.setFont(new Font("Dialog", Font.BOLD, 10));
+        Clean.setBorderPainted(false);
+        Clean.setBackground(new Color(0xEE9458));
  
 
         JButton Play = new JButton("Play");
@@ -70,6 +79,9 @@ public class mainMenu extends JPanel{
                 }
             }
         );
+        Play.setFont(new Font("Dialog", Font.BOLD, 10));
+        Play.setBorderPainted(false);
+        Play.setBackground(new Color(0xEE9458));
 
 
         JButton Skill = new JButton("Skill");
@@ -80,6 +92,9 @@ public class mainMenu extends JPanel{
                 }
             }
         );
+        Skill.setFont(new Font("Dialog", Font.BOLD, 10));
+        Skill.setBorderPainted(false);
+        Skill.setBackground(new Color(0xEE9458));
 
 
         // TODO: Make these buttons actually change the time speed. Pet class has to be done first.
@@ -91,7 +106,10 @@ public class mainMenu extends JPanel{
                 }
             }
         );
- 
+        one.setFont(new Font("Dialog", Font.BOLD, 10));
+        one.setBorderPainted(false);
+        one.setBackground(new Color(0xA55536));
+        one.setForeground(new Color(0xFEFEFE));
 
         JButton half = new JButton("0.5x");
         half.addActionListener(
@@ -101,7 +119,10 @@ public class mainMenu extends JPanel{
                 }
             }
         );
- 
+        half.setFont(new Font("Dialog", Font.BOLD, 10));
+        half.setBorderPainted(false);
+        half.setBackground(new Color(0xA55536));
+        half.setForeground(new Color(0xFEFEFE));
 
         JButton two = new JButton("2x");
         two.addActionListener(
@@ -111,8 +132,13 @@ public class mainMenu extends JPanel{
                 }
             }
         );
+        two.setFont(new Font("Dialog", Font.BOLD, 10));
+        two.setBorderPainted(false);
+        two.setBackground(new Color(0xA55536));
+        two.setForeground(new Color(0xFEFEFE));
  
         JPanel needs = new JPanel();
+        needs.setBackground(new Color(0xA3D8C8));
         needs.add(Feed);
         needs.add(Skill);
         needs.add(Clean);
@@ -120,8 +146,8 @@ public class mainMenu extends JPanel{
         setLayout(new BorderLayout());
         add(needs, BorderLayout.NORTH);
 
-        
         JPanel time = new JPanel();
+        time.setBackground(new Color(0xA3D8C8));
         time.add(half);
         time.add(one);
         time.add(two);
@@ -129,6 +155,7 @@ public class mainMenu extends JPanel{
 
         JPanel pet = new JPanel();
         pet.add(picLabel);
+        pet.setBackground(new Color(0xA3D8C8));
         add(pet, BorderLayout.CENTER);
         
     } 
@@ -136,7 +163,7 @@ public class mainMenu extends JPanel{
     public JLabel PetImage(){
 
         try {
-            image = ImageIO.read(new File("resources/placeholder_pet.png"));
+            image = ImageIO.read(new File("resources/dog.png"));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
@@ -145,7 +172,7 @@ public class mainMenu extends JPanel{
 
         ImageIcon icon = new ImageIcon(image);
         Image image = icon.getImage();
-        Image new_img = image.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
+        Image new_img = image.getScaledInstance(225, 225,  java.awt.Image.SCALE_SMOOTH);
         icon = new ImageIcon(new_img);
 
         JLabel picLabel = new JLabel(icon);
