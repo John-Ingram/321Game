@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import java.util.Date;
+
 
 // TODO: Javadoc comments
 // TODO: Update the button images and pet with better art.
@@ -26,6 +28,7 @@ public class mainMenu extends JPanel{
     private BufferedImage image; 
 
     private Pet pet;
+    private final Date createdDate = new java.util.Date();
 
     public mainMenu(Pet pet) {
 	this.pet = pet;
@@ -109,7 +112,6 @@ public class mainMenu extends JPanel{
             }
         );
  
-
         JPanel needs = new JPanel();
         needs.add(Feed);
         needs.add(Skill);
@@ -150,7 +152,6 @@ public class mainMenu extends JPanel{
         return picLabel;
        
     }
-    
     
     @Override
     public Dimension getPreferredSize() {

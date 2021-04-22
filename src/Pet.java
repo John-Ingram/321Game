@@ -1,5 +1,5 @@
 import javax.swing.JPanel;
-import java.util.Date;
+
 
 // TODO: Javadoc comments.
 // TODO: Have the pet's needs be affected by time and the time controls (create an aging function basically).
@@ -19,9 +19,9 @@ public class Pet extends JPanel {
 	this.setSkill((float) 10);
     }
     
-    public float counter;
-    public float timeSpeed;
-    private final Date createdDate = new java.util.Date();
+    public float counter = 0;
+    public float timeSpeed = 1;
+
 
     /**
     * @generated
@@ -130,71 +130,37 @@ public class Pet extends JPanel {
     protected void playWithPet() {
 	this.setHappiness(this.getHappiness() + 1);	
     }
+
     /**
     * @generated
     */
     protected void cleanPet() {
 	this.setHygene(this.getHygene() + 1);
     }
+
     /**
     * @generated
     */
     protected void feedPet() {
 	this.setHunger(this.getHunger() + 1);
     }
+
     /**
     * @generated
     */
     protected void upSkill() {
 	this.setSkill(this.getSkill() +1);
     }
-    /**
-    * @generated
-    */
-    protected void checkStatus() {
-        //TODO
+ 
+
+    public void setTimeSpeed(float timeSpeed) {
+        this.timeSpeed = timeSpeed;
     }
 
-    // decay functions
 
-public float skillDecay (float skill) {
-    this.setSkill(this.getSkill() - 1);
-    return skill;
- }
- 
-public float hungerDecay (float hunger) {
-    this.setHunger(this.getHunger() - 1);
-    return hunger;
- }
-  
-public float hygeneDecay (float hygene) {
-    this.setHygene(this.getHappiness() - 1);
-    return hygene;
- }
-   
-public float happinessDecay (float happiness) {
-    this.setHappiness(this.getHappiness() - 1);
-    return happiness;
-
- 
-    
- }
-
- public float timeCount() {
-    java.util.Date now = new java.util.Date();
-    return counter = (float)((now.getTime() - this.createdDate.getTime()) / 1000);
- }
-
- public void setTimeSpeed(float timeSpeed) {
-    this.timeSpeed = timeSpeed;
-}
-
-/**
-* @generated
-*/
-public Float getTimeSpeed() {
-    return this.timeSpeed;
-}
+    public Float getTimeSpeed() {
+        return this.timeSpeed;
+    }
 
     
 }
