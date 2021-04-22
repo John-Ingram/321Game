@@ -84,7 +84,7 @@ public class mainMenu extends JPanel{
         one.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    
+                    pet.setTimeSpeed((float)1);
                 }
             }
         );
@@ -94,7 +94,7 @@ public class mainMenu extends JPanel{
         half.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    
+                    pet.setTimeSpeed((float)0.5);
                 }
             }
         );
@@ -104,7 +104,7 @@ public class mainMenu extends JPanel{
         two.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    
+                    pet.setTimeSpeed((float)2);
                 }
             }
         );

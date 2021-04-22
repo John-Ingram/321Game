@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
+import java.lang.Math;
 
 // TODO: Javadoc comments
 
@@ -11,12 +12,22 @@ public class statusMenu extends JPanel{
     // TODO: Integrate the pet's status with the panel
     // TODO: Create a template for what the panel will look like
 
+
+
     private JLabel happiness, hygene, hunger, skill;
     private Pet pet;
+	float first = 0;
+	float second = 0;
+	float diff = 0;
+	float counter = 0;
     
     public statusMenu(Pet pet) {
 	this.pet = pet;
-	
+
+	first = pet.timeCount();
+
+
+
         setBackground(Color.PINK);
 	SpringLayout layout = new SpringLayout();
 	setLayout(layout);
@@ -50,7 +61,22 @@ public class statusMenu extends JPanel{
 	add(hunger);
 	add(skill);
 
+	//compare first and second
+	diff = first - second;
+
+	if (diff > (10 * pet.getTimeSpeed())){
+		counter = diff / (10 * pet.getTimeSpeed());
+		counter = Math.round(counter);
+	}
+
+	if (counter != 0) {
+		updateDecay();	
+		counter--;
+	}
+
 	updateStatus();
+
+	second = first;
     }
 
     public void updateStatus(){
@@ -59,6 +85,13 @@ public class statusMenu extends JPanel{
 	hunger.setText("Hunger: " + pet.getHunger());
 	skill.setText("Skill: " + pet.getSkill());
     }
+
+	public void updateDecay() {
+		pet.setHappiness(pet.happinessDecay(pet.getHappiness()));
+		pet.setHygene(pet.hygeneDecay(pet.getHygene()));
+		pet.setHunger(pet.hungerDecay(pet.getHunger()));
+		pet.setSkill(pet.skillDecay(pet.getSkill()));
+	}
 
     @Override
     public Dimension getPreferredSize() {

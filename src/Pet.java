@@ -1,4 +1,5 @@
 import javax.swing.JPanel;
+import java.util.Date;
 
 // TODO: Javadoc comments.
 // TODO: Have the pet's needs be affected by time and the time controls (create an aging function basically).
@@ -12,12 +13,16 @@ public class Pet extends JPanel {
     
     public Pet(String name){
 	this.setPetName(name);
-	this.setHygene((float) 0);
-	this.setHunger((float) 0);
-	this.setHappiness((float) 0);
-	this.setSkill((float) 0);
+	this.setHygene((float) 10);
+	this.setHunger((float) 10);
+	this.setHappiness((float) 10);
+	this.setSkill((float) 10);
     }
     
+    public float counter;
+    public float timeSpeed;
+    private final Date createdDate = new java.util.Date();
+
     /**
     * @generated
     */
@@ -69,7 +74,7 @@ public class Pet extends JPanel {
     /**
     * @generated
     */
-    private void setHunger(Float hunger) {
+    public void setHunger(Float hunger) {
         this.hunger = hunger;
     }
     
@@ -83,7 +88,7 @@ public class Pet extends JPanel {
     /**
     * @generated
     */
-    private void setSkill(Float skill) {
+    public void setSkill(Float skill) {
         this.skill = skill;
     }
     
@@ -97,7 +102,7 @@ public class Pet extends JPanel {
     /**
     * @generated
     */
-    private void setHygene(Float hygene) {
+    public void setHygene(Float hygene) {
         this.hygene = hygene;
     }
     
@@ -111,7 +116,7 @@ public class Pet extends JPanel {
     /**
     * @generated
     */
-    private void setHappiness(Float happiness) {
+    public void setHappiness(Float happiness) {
         this.happiness = happiness;
     }
     
@@ -149,5 +154,47 @@ public class Pet extends JPanel {
     protected void checkStatus() {
         //TODO
     }
+
+    // decay functions
+
+public float skillDecay (float skill) {
+    this.setSkill(this.getSkill() - 1);
+    return skill;
+ }
+ 
+public float hungerDecay (float hunger) {
+    this.setHunger(this.getHunger() - 1);
+    return hunger;
+ }
+  
+public float hygeneDecay (float hygene) {
+    this.setHygene(this.getHappiness() - 1);
+    return hygene;
+ }
+   
+public float happinessDecay (float happiness) {
+    this.setHappiness(this.getHappiness() - 1);
+    return happiness;
+
+ 
+    
+ }
+
+ public float timeCount() {
+    java.util.Date now = new java.util.Date();
+    return counter = (float)((now.getTime() - this.createdDate.getTime()) / 1000);
+ }
+
+ public void setTimeSpeed(float timeSpeed) {
+    this.timeSpeed = timeSpeed;
+}
+
+/**
+* @generated
+*/
+public Float getTimeSpeed() {
+    return this.timeSpeed;
+}
+
     
 }
