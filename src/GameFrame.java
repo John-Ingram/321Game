@@ -15,15 +15,14 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame{
 
-    private CardLayout cardLayout;
-    private JPanel mainPanel;
+    public static CardLayout cardLayout;
+    public static JPanel mainPanel;
     private startMenu start;
     private mainMenu main;
     private exitMenu exit;
     private statusMenu status;
-    private JButton startGame;
-    private JButton startMain;
-    private JButton startStatus;
+    private static JButton startMain;
+    private static JButton startStatus;
     private JButton startExit;
     
 
@@ -58,16 +57,6 @@ public class GameFrame extends JFrame{
         // TODO: Figure out how to hide the "START" button once you are in the game
         // TODO: Figure out how to hide the "STATUS" button until you are in the game
 
-        startGame = new JButton("START");
-        startGame.addActionListener(
-            new ActionListener(){
-                public void actionPerformed(ActionEvent e){
-                    cardLayout.show(mainPanel, "start");
-                    startGame.setVisible(false);
-                    startStatus.setVisible(true);
-                }
-            }
-        );
 
         startMain = new JButton("MAIN");
         startMain.addActionListener(
@@ -102,7 +91,6 @@ public class GameFrame extends JFrame{
 
     public void setLayout(){
         JPanel navigation = new JPanel();
-        navigation.add(startGame);
         navigation.add(startMain);
         navigation.add(startStatus);
 
@@ -119,6 +107,14 @@ public class GameFrame extends JFrame{
         setLocationByPlatform(true);
         setPreferredSize(new Dimension(600, 600));
         setVisible(true);
+        startStatus.setVisible(false);
+        startMain.setVisible(false);
+    }
+
+    public static void showMain(){
+        cardLayout.show(mainPanel, "main");
+        startStatus.setVisible(true);
+        startMain.setVisible(true);
     }
     
     public static void main(String[] args) {

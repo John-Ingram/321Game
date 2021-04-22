@@ -30,7 +30,7 @@ public class startMenu extends JPanel {
         Start.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    //needs to call main menu
+                    GameFrame.showMain();
                 }
             }
         );
