@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
-
+import java.awt.event.ActionEvent;
 import java.lang.Math;
 import java.util.Date;
 
@@ -68,10 +68,13 @@ public class StatusMenu extends JPanel{
 		// updates previous time for future calculations
 		previousUpdateTime = System.currentTimeMillis();
 
-		ActionListener updater = new ActionListener()
-		{
-			pub
-		}
+		ActionListener updater = new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				updateStatus();
+			}
+		};
+		timer = new Timer(100, updater);
+		timer.start();
 
 
 		// writes out stats of pet
