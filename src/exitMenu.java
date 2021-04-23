@@ -56,7 +56,7 @@ public class exitMenu extends JPanel {
     public JLabel PetImage(){
 
         try {
-            image = ImageIO.read(new File("resources/shocked_dog.png"));
+            image = ImageIO.read(new File("../resources/shocked_dog.png"));
         } catch (IOException e1) {
             e1.printStackTrace();
         }

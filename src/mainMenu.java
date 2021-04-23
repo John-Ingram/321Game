@@ -162,7 +162,7 @@ public class mainMenu extends JPanel{
 
     public JLabel PetImage(){
         try {
-            image = ImageIO.read(new File("../resources/placeholder_pet.png"));
+            image = ImageIO.read(new File("../resources/dog.png"));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
