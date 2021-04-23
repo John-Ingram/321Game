@@ -17,10 +17,9 @@ public class statusMenu extends JPanel{
 	private final Date createdDate = new java.util.Date();
     private JLabel happiness, hygene, hunger, skill;
     private Pet pet;
-	public float first = 0;
-	float second = 0;
-	float diff = 0;
-	float counter = 0;
+
+	long countDownTimeMS = 5*1000;
+	long previousUpdateTime = 0;
     
     public statusMenu(Pet pet) {
 		this.pet = pet;
@@ -58,6 +57,8 @@ public class statusMenu extends JPanel{
 		add(hunger);
 		add(skill);
 
+		previousUpdateTime = System.currentTimeMillis();
+
 		updateStatus();
 
     }
@@ -65,25 +66,29 @@ public class statusMenu extends JPanel{
 	// TODO: Make it round down
 
     public void updateStatus(){
-		java.util.Date now = new java.util.Date();
-        first = (float)((now.getTime() - this.createdDate.getTime()) / 1000);
 		
-		//compare first and second
-		diff = first - second;
+		long elapsedTimeMS = System.currentTimeMillis() - previousUpdateTime;
 
-		if (diff >= (5 * pet.getTimeSpeed())){
-			counter = diff / (5 * pet.getTimeSpeed());
-			counter = Math.round(counter);
+		float counter = 0;
+		
+		if (elapsedTimeMS >= (countDownTimeMS * pet.getTimeSpeed())){
+			counter = (float)Math.floor(elapsedTimeMS / (countDownTimeMS * pet.getTimeSpeed()));
+			pet.setHappiness(pet.getHappiness() - counter);
+			pet.setHygene(pet.getHygene() - counter);
+			pet.setHunger(pet.getHunger() - counter);
+			pet.setSkill(pet.getSkill() - counter);
+
+			previousUpdateTime = System.currentTimeMillis();
+			
+			
 		}
 
-		happiness.setText("Happiness: " + (pet.getHappiness() - counter));
-		hygene.setText("Hygene: " + (pet.getHygene() - counter));
-		hunger.setText("Hunger: " + (pet.getHunger()- counter));
-		skill.setText("Skill: " + (pet.getSkill()- counter));
+		happiness.setText("Happiness: " + pet.getHappiness());
+		hygene.setText("Hygene: " + pet.getHygene());
+		hunger.setText("Hunger: " + pet.getHunger());
+		skill.setText("Skill: " + pet.getSkill());
 
-		second = first;
-    }
-
+	}
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
