@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import java.lang.Math;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 // TODO: Javadoc comments
 
@@ -64,8 +66,17 @@ public class statusMenu extends JPanel{
 		// updates previous time for future calculations
 		previousUpdateTime = System.currentTimeMillis();
 
-		// writes out stats of pet
-		updateStatus();
+		// Updates the status of the pet every $countDownTimeMS milliseconds
+
+		TimerTask t = new TimerTask(){
+				@Override
+				public void run(){
+					updateStatus();
+				}
+			};
+
+		Timer timer = new Timer();
+		timer.schedule(t,0l,countDownTimeMS);
 
     }
 
