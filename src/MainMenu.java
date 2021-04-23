@@ -26,14 +26,14 @@ import java.util.Date;
 // TODO: Update the background.
 
 @SuppressWarnings("serial")
-public class mainMenu extends JPanel{
+public class MainMenu extends JPanel{
 
     private BufferedImage image; 
 
     private Pet pet;
     private final Date createdDate = new java.util.Date();
 
-    public mainMenu(Pet pet) {
+    public MainMenu(Pet pet) {
 	    this.pet = pet;
         setBackground(Color.WHITE);
         add(new JLabel("Main Menu"));

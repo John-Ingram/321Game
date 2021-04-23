@@ -10,7 +10,7 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 // class that creates the status menu
-public class statusMenu extends JPanel{
+public class StatusMenu extends JPanel{
     // TODO: Create a template for what the panel will look like
 
 	// varaibles and initialization
@@ -25,7 +25,7 @@ public class statusMenu extends JPanel{
 	* Creates the status menu for the pets stats
 	* @param pet the pet of class Pet
 	*/
-    public statusMenu(Pet pet) {
+    public StatusMenu(Pet pet) {
 		this.pet = pet;
 
 		setBackground(Color.PINK);
