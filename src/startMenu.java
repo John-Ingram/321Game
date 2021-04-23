@@ -58,7 +58,10 @@ public class startMenu extends JPanel {
         add(pet, BorderLayout.CENTER);
     }    
 
-    
+    /*
+    * Sets up the image for the pet
+    * @return picLabel
+    */
     public JLabel PetImage(){
 
         try {

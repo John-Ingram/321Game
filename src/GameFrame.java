@@ -17,6 +17,7 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame{
 
+    // varaibles
     public static CardLayout cardLayout;
     public static JPanel mainPanel;
     private startMenu start;
@@ -28,12 +29,18 @@ public class GameFrame extends JFrame{
     private JButton startExit;
     
 
+    /*
+    * Creates the game frame
+    */
     public GameFrame() {
         createCardLayout();
         createNavigation();
         setLayout();
     }
 
+    /*
+    * Creates teh card layout
+    */
     public void createCardLayout(){
         // initializing the cardlayout
         cardLayout = new CardLayout();
@@ -54,12 +61,15 @@ public class GameFrame extends JFrame{
         mainPanel.add(status, "status");
     }
 
+    /*
+    * Creates the navigation
+    */
     public void createNavigation(){
 
         // TODO: Figure out how to hide the "START" button once you are in the game
         // TODO: Figure out how to hide the "STATUS" button until you are in the game
 
-
+        // button to allow user to get back to main screen
         startMain = new JButton("MAIN");
         startMain.addActionListener(
             new ActionListener(){
@@ -68,10 +78,12 @@ public class GameFrame extends JFrame{
                 }
             }
         );
+
         startMain.setFont(new Font("Dialog", Font.BOLD, 10));
         startMain.setBorderPainted(false);
         startMain.setBackground(new Color(0xA3D8C8));
 
+        // button to allow user to exit
         startExit = new JButton("EXIT");
         startExit.addActionListener(
             new ActionListener(){
@@ -80,10 +92,12 @@ public class GameFrame extends JFrame{
                 }
             }  
         );
+
         startExit.setFont(new Font("Dialog", Font.BOLD, 10));
         startExit.setBorderPainted(false);
         startExit.setBackground(new Color(0xFC8080));
 
+        // button to allow user to check pets status
         startStatus = new JButton("STATUS");
         startStatus.setVisible(false);
         startStatus.addActionListener(
@@ -94,11 +108,15 @@ public class GameFrame extends JFrame{
                 }
             }  
         );
+
         startStatus.setFont(new Font("Dialog", Font.BOLD, 10));
         startStatus.setBorderPainted(false);
         startStatus.setBackground(new Color(0xA3D8C8));
     }
 
+    /*
+    * Creates the layout of the game
+    */
     public void setLayout(){
         JPanel navigation = new JPanel();
         navigation.add(startMain);
@@ -123,6 +141,9 @@ public class GameFrame extends JFrame{
         startMain.setVisible(false);
     }
 
+    /*
+    * Shows the main menu
+    */
     public static void showMain(){
         cardLayout.show(mainPanel, "main");
         startStatus.setVisible(true);

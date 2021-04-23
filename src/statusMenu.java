@@ -9,11 +9,11 @@ import java.util.Date;
 // TODO: Javadoc comments
 
 @SuppressWarnings("serial")
+// class that creates the status menu
 public class statusMenu extends JPanel{
-    // TODO: Integrate the pet's status with the panel
     // TODO: Create a template for what the panel will look like
 
-
+	// varaibles and initialization
 	private final Date createdDate = new java.util.Date();
     private JLabel happiness, hygene, hunger, skill;
     private Pet pet;
@@ -21,6 +21,10 @@ public class statusMenu extends JPanel{
 	long countDownTimeMS = 5*1000;
 	long previousUpdateTime = 0;
     
+	/*
+	* Creates the status menu for the pets stats
+	* @param pet the pet of class Pet
+	*/
     public statusMenu(Pet pet) {
 		this.pet = pet;
 
@@ -57,20 +61,26 @@ public class statusMenu extends JPanel{
 		add(hunger);
 		add(skill);
 
+		// updates previous time for future calculations
 		previousUpdateTime = System.currentTimeMillis();
 
+		// writes out stats of pet
 		updateStatus();
 
     }
 
-	// TODO: Make it round down
-
+	/*
+	* Updates the stats of the pet in the status menu
+	* Takes into account the decay of the values over time 
+	*/
     public void updateStatus(){
 		
+		// finds elapsed time
 		long elapsedTimeMS = System.currentTimeMillis() - previousUpdateTime;
 
 		float counter = 0;
 		
+		// sets pet stats to decayed values if enough time has passed
 		if (elapsedTimeMS >= (countDownTimeMS * pet.getTimeSpeed())){
 			counter = (float)Math.floor(elapsedTimeMS / (countDownTimeMS * pet.getTimeSpeed()));
 			pet.setHappiness(pet.getHappiness() - counter);
@@ -78,17 +88,16 @@ public class statusMenu extends JPanel{
 			pet.setHunger(pet.getHunger() - counter);
 			pet.setSkill(pet.getSkill() - counter);
 
-			previousUpdateTime = System.currentTimeMillis();
-			
-			
+			previousUpdateTime = System.currentTimeMillis();	
 		}
 
+		// prints out pets stats
 		happiness.setText("Happiness: " + pet.getHappiness());
 		hygene.setText("Hygene: " + pet.getHygene());
 		hunger.setText("Hunger: " + pet.getHunger());
 		skill.setText("Skill: " + pet.getSkill());
-
 	}
+	
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
