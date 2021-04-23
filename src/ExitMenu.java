@@ -22,11 +22,11 @@ import javax.imageio.ImageIO;
 // TODO: Javadoc comments
 
 @SuppressWarnings("serial")
-public class exitMenu extends JPanel {
+public class ExitMenu extends JPanel {
 
     private BufferedImage image; 
 
-    public exitMenu() {
+    public ExitMenu() {
         setBackground(new Color(0xA3D8C8));
         add(new JLabel("Are you sure you want to exit?"));
 
@@ -44,6 +44,19 @@ public class exitMenu extends JPanel {
         Yes.setBackground(new Color(0xA55536));
         Yes.setForeground(new Color(0xFEFEFE));
         add(Yes);
+        
+        JButton No = new JButton("NO");
+        No.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+		        Renderer.resetMain(); 
+                }
+            }
+        );
+        No.setBorderPainted(false);
+        No.setBackground(new Color(0xA55536));
+        No.setForeground(new Color(0xFEFEFE));
+        add(No);
 
         JLabel picLabel = PetImage();
         JPanel pet = new JPanel();
@@ -73,6 +86,6 @@ public class exitMenu extends JPanel {
     
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(300, 300);
+        return new Dimension(600, 300);
     }
 }

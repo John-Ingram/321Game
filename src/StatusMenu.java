@@ -3,6 +3,9 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
+import javax.swing.Timer;
+import java.awt.event.ActionListener;
+
 import java.lang.Math;
 import java.util.Date;
 
@@ -16,11 +19,12 @@ public class StatusMenu extends JPanel{
 	// varaibles and initialization
 	private final Date createdDate = new java.util.Date();
     private JLabel happiness, hygene, hunger, skill;
-    private Pet pet;
+	private Pet pet;
+	private Timer timer;
 
 	long countDownTimeMS = 5*1000;
 	long previousUpdateTime = 0;
-    
+	
 	/*
 	* Creates the status menu for the pets stats
 	* @param pet the pet of class Pet
@@ -64,9 +68,14 @@ public class StatusMenu extends JPanel{
 		// updates previous time for future calculations
 		previousUpdateTime = System.currentTimeMillis();
 
+		ActionListener updater = new ActionListener()
+		{
+			pub
+		}
+
+
 		// writes out stats of pet
 		updateStatus();
-
     }
 
 	/*
@@ -93,7 +102,7 @@ public class StatusMenu extends JPanel{
 
 		// prints out pets stats
 		happiness.setText("Happiness: " + pet.getHappiness());
-		hygene.setText("Hygene: " + pet.getHygene());
+		hygene.setText("Hygiene: " + pet.getHygene());
 		hunger.setText("Hunger: " + pet.getHunger());
 		skill.setText("Skill: " + pet.getSkill());
 	}

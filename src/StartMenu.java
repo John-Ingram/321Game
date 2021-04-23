@@ -7,11 +7,14 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -22,14 +25,15 @@ import java.util.Date;
 
 // TODO: Javadoc comments
 @SuppressWarnings("serial")
-public class startMenu extends JPanel {
+public class StartMenu extends JPanel {
     private BufferedImage image; 
     private JButton Start;
+    private JTextField nameField;
 
     /*
     * Sets up the display for the menu
     */
-    public startMenu() {
+    public StartMenu() {
         setBackground(new Color(0xA3D8C8));
         //add(new JLabel("Virtual Pet    "));
         createControls();
@@ -39,17 +43,33 @@ public class startMenu extends JPanel {
     * Creates the buttons to be displayed on the start menu
     */
     public void createControls(){
+        
+        JButton Start = new JButton("Adopt a Pet!");
+        nameField = new JTextField("Name Your Pet", 16);
+        nameField.addKeyListener(
+            new KeyListener(){
+                public void keyPressed(java.awt.event.KeyEvent k) {};
+                public void keyTyped(java.awt.event.KeyEvent k) {
+                    Start.setText("Adopt " + nameField.getText() + "!");
+                };        
+                public void keyReleased(java.awt.event.KeyEvent k) {
+                    Start.setText("Adopt " + nameField.getText() + "!");
+                };
+            }
+        );
+        add(nameField);
 
-        JButton Start = new JButton("Adopt a Virtual Pet!");
+
         Start.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    GameFrame.showMain();
+                    Renderer.resetMain();
                 }
             }
         );
         Start.setBackground(new Color(0xEE9458));
         add(Start);
+
 
         JLabel picLabel = PetImage();
         JPanel pet = new JPanel();
@@ -89,9 +109,14 @@ public class startMenu extends JPanel {
         add(controls, BorderLayout.SOUTH);
     }
 
+    public String getName()
+    {
+        return nameField.getText();
+    }
+
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(300, 300);
+        return new Dimension(600, 300);
     }
 }
 
