@@ -73,7 +73,7 @@ public class StatusMenu extends JPanel{
 
 		ActionListener updater = new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				updateStatus();
+				updateStatus(timer);
 			}
 		};
 		timer = new Timer(100, updater);
@@ -81,13 +81,13 @@ public class StatusMenu extends JPanel{
 
 
 		// writes out stats of pet
-		updateStatus();
+		updateStatus(timer);
     }
 
 	/*
 	* Updates the stats of the pet in the status menu and takes into account the decay of the values over time 
 	*/
-    public void updateStatus(){
+    private void updateStatus(Timer timer){
 		
 		// finds elapsed time
 		long elapsedTimeMS = System.currentTimeMillis() - previousUpdateTime;
@@ -110,6 +110,37 @@ public class StatusMenu extends JPanel{
 		hygene.setText("Hygiene: " + pet.getHygene());
 		hunger.setText("Hunger: " + pet.getHunger());
 		skill.setText("Skill: " + pet.getSkill());
+
+		// Handle loss
+		if (pet.getHappiness() < 1) lossHandler(timer, "unhappy");
+		if (pet.getHygene() < 1) lossHandler(timer, "dirty");
+		if (pet.getHunger() < 1) lossHandler(timer, "hungry");
+		if (pet.getSkill() < 1) lossHandler(timer, "horribly trained");
+
+	}
+
+	/**
+	 * Sends the loss message, and stops the game
+	 * @param timer
+	 * @param value
+	 * @param message
+	 */
+	private void lossHandler(Timer timer, String message)
+	{
+		clearStatText();
+		happiness.setText("Your pet was so "+ message +", that animal services had to take it!");
+		timer.stop();
+	}
+
+	/**
+	 * Clears the Stat Text so a loss message can be displayed.
+	 */
+	private void clearStatText()
+	{
+		happiness.setText("");
+		hygene.setText("");
+		hunger.setText("");
+		skill.setText("");
 	}
 	
     @Override
