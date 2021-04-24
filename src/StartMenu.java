@@ -87,7 +87,7 @@ public class StartMenu extends JPanel {
     public JLabel PetImage(){
 
         try {
-            image = ImageIO.read(new File("resources/adopt.png"));
+            image = ImageIO.read(new File("../resources/adopt.png"));
         } catch (IOException e1) {
             e1.printStackTrace();
         }

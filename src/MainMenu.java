@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,6 +33,8 @@ public class MainMenu extends JPanel{
 
     private BufferedImage image; 
     private Pet pet;
+	private Timer timer;
+
 
     /**
      * Creates the Main Menu panel.
@@ -42,19 +45,20 @@ public class MainMenu extends JPanel{
         setBackground(Color.WHITE);
         add(new JLabel("Main Menu"));
         
-        JLabel picLabel = PetImage();
-        createControls(picLabel);
+        JLabel picLabel = PetImage("../resources/dog.png");
+        JLabel lossLabel = PetImage("../resources/shocked_dog.png");
+        createControls(picLabel, lossLabel);
     }
 
     /**
      * Creates the controls for the game that allow the user to interact with the pet.
      */
-    public void createControls(JLabel picLabel){
+    public void createControls(JLabel picLabel, JLabel lossLabel){
         JButton Feed = new JButton("Feed");
         Feed.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-		    pet.feedPet();
+		            pet.feedPet();
                 }
             }
         );
@@ -67,7 +71,7 @@ public class MainMenu extends JPanel{
         Clean.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-		    pet.cleanPet(); 
+		            pet.cleanPet(); 
                 }
             }
         );
@@ -156,10 +160,28 @@ public class MainMenu extends JPanel{
         time.add(two);
         add(time, BorderLayout.SOUTH);
 
-        JPanel pet = new JPanel();
-        pet.add(picLabel);
-        pet.setBackground(new Color(0xA3D8C8));
-        add(pet, BorderLayout.CENTER);
+        JPanel petPic = new JPanel();
+        petPic.add(picLabel);
+        petPic.setBackground(new Color(0xA3D8C8));
+        add(petPic, BorderLayout.CENTER);
+
+        // Make dog sad on loss
+        ActionListener updater = new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+                if (pet.getHappiness() < 1 || pet.getHygene() < 1 ||
+                    pet.getHunger() < 1 || pet.getSkill()  < 1 ) {
+                    remove(petPic);
+                    JPanel petPic = new JPanel();
+                    petPic.add(lossLabel);
+                    petPic.setBackground(new Color(0xA3D8C8));
+                    add(petPic, BorderLayout.CENTER);
+                    needs.revalidate();
+                    needs.repaint();
+                }
+			}
+		};
+		timer = new Timer(100, updater);
+		timer.start();
         
     } 
 
@@ -167,15 +189,13 @@ public class MainMenu extends JPanel{
      * Inserts the image for the main menu page.
      * @return The image embedded into the main menu page.
      */
-    public JLabel PetImage(){
+    public JLabel PetImage(String path){
 
         try {
-            image = ImageIO.read(new File("resources/dog.png"));
+            image = ImageIO.read(new File(path));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-
-        // TODO: Resize image outside of program and update the resource image so we can avoid resizing in the program.
 
         ImageIcon icon = new ImageIcon(image);
         Image image = icon.getImage();
@@ -186,6 +206,8 @@ public class MainMenu extends JPanel{
         return picLabel;
        
     }
+
+    
     
     @Override
      /**

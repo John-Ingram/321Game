@@ -136,7 +136,7 @@ public class Renderer{
         //Set up the content of the window
         createComponents();
         try {
-            ImageIcon icon = new ImageIcon("resources/WindowIcon.png");
+            ImageIcon icon = new ImageIcon("../resources/WindowIcon.png");
             frame.setIconImage(icon.getImage());
         } catch (Exception e) {
             //do nothing

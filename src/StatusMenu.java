@@ -71,6 +71,7 @@ public class StatusMenu extends JPanel{
 		// updates previous time for future calculations
 		previousUpdateTime = System.currentTimeMillis();
 
+		// game loop
 		ActionListener updater = new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				updateStatus(timer);
@@ -95,8 +96,8 @@ public class StatusMenu extends JPanel{
 		float counter = 0;
 		
 		// sets pet stats to decayed values if enough time has passed
-		if (elapsedTimeMS >= (countDownTimeMS * pet.getTimeSpeed())){
-			counter = (float)Math.floor(elapsedTimeMS / (countDownTimeMS * pet.getTimeSpeed()));
+		if (elapsedTimeMS >= (countDownTimeMS / pet.getTimeSpeed())){
+			counter = (float)Math.floor(elapsedTimeMS / (countDownTimeMS / pet.getTimeSpeed()));
 			pet.setHappiness(pet.getHappiness() - counter);
 			pet.setHygene(pet.getHygene() - counter);
 			pet.setHunger(pet.getHunger() - counter);
@@ -128,7 +129,8 @@ public class StatusMenu extends JPanel{
 	private void lossHandler(Timer timer, String message)
 	{
 		clearStatText();
-		happiness.setText("Your pet was so "+ message +", that animal services had to take it!");
+		happiness.setText("Your pet was so "+ message);
+		hygene.setText("that animal services had to take it!");
 		timer.stop();
 	}
 
