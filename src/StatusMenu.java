@@ -1,3 +1,8 @@
+/**
+ * CS 321 - Final Project - Virtual Pet - Implementation
+ * @author Laurel Strelzoff, John Ingram, Bobby Tighe, Katie Weaver, Brandon Perry
+ */
+
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
@@ -7,17 +12,15 @@ import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.lang.Math;
-import java.util.Date;
 
-// TODO: Javadoc comments
 
 @SuppressWarnings("serial")
-// class that creates the status menu
+/**
+ * Class that creates the Status menu panel.
+ */
 public class StatusMenu extends JPanel{
-    // TODO: Create a template for what the panel will look like
 
-	// varaibles and initialization
-	private final Date createdDate = new java.util.Date();
+	// variables and initialization
     private JLabel happiness, hygene, hunger, skill;
 	private Pet pet;
 	private Timer timer;
@@ -82,8 +85,7 @@ public class StatusMenu extends JPanel{
     }
 
 	/*
-	* Updates the stats of the pet in the status menu
-	* Takes into account the decay of the values over time 
+	* Updates the stats of the pet in the status menu and takes into account the decay of the values over time 
 	*/
     public void updateStatus(){
 		
@@ -111,6 +113,9 @@ public class StatusMenu extends JPanel{
 	}
 	
     @Override
+	 /**
+     * Sets the size of the game.
+     */
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
     }

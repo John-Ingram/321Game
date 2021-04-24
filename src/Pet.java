@@ -1,24 +1,26 @@
+/**
+ * CS 321 - Final Project - Virtual Pet - Implementation
+ * @author Laurel Strelzoff, John Ingram, Bobby Tighe, Katie Weaver, Brandon Perry
+ */
+
 import javax.swing.JPanel;
-
-
-// TODO: Javadoc comments.
-// TODO: Have a prompt to create the pet's name if the pet has no name.
-// TODO: Have the pet's status be affected by playing, cleaning, etc.
-
 @SuppressWarnings("serial")
 
-// Class that contains the stats of the pet as well as the functions to alter them through user interact
+/**
+ * Class that contains the stats of the pet as well as the functions to alter them through user interaction.
+ */ 
 public class Pet extends JPanel {
 
     // initializing the pets default stat values (10)
     public Pet(String name){
-	this.setPetName(name);
-	this.setHygene((float) 10);
-	this.setHunger((float) 10);
-	this.setHappiness((float) 10);
-	this.setSkill((float) 10);
+        this.setPetName(name);
+        this.setHygene((float) 10);
+        this.setHunger((float) 10);
+        this.setHappiness((float) 10);
+        this.setSkill((float) 10);
     }
-    // varaibles to help with decaying the values over
+
+    // variables to help with decaying the pet's stats over time
     public float counter = 0;
     public float timeSpeed = 1;
 
@@ -48,12 +50,10 @@ public class Pet extends JPanel {
     */
     private Float happiness;
     
-    
-    
     /**
     * @generated
-    * Gets the pets name
-    * @return name the pet name
+    * Gets the pet's name.
+    * @return the pet's name.
     */
     public String getPetName() {
         return this.name;
@@ -61,8 +61,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Sets the pets name
-    * @param name name of the pet
+    * Sets the pet's name.
+    * @param name The pet's new name.
     */
     private void setPetName(String name) {
         this.name = name;
@@ -70,8 +70,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Gets the pets hunger stat
-    * @return hunger the hunger stat
+    * Gets the pet's hunger stat.
+    * @return The pet's hunger level.
     */
     public Float getHunger() {
         return this.hunger;
@@ -79,8 +79,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Sets the pets hunger stat
-    * @param hunger the hunger stat
+    * Sets the pet's hunger stat.
+    * @param hunger The updated hunger stat.
     */
     public void setHunger(Float hunger) {
         this.hunger = hunger;
@@ -88,8 +88,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Gets the pets skill stat
-    * @return skill the skill stat
+    * Gets the pet's skill stat.
+    * @return The pet's skill level.
     */
     public Float getSkill() {
         return this.skill;
@@ -97,8 +97,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Sets the pets skill stat
-    * @param skill the skill stat
+    * Sets the pet's skill stat.
+    * @param skill The updated skill stat.
     */
     public void setSkill(Float skill) {
         this.skill = skill;
@@ -106,8 +106,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Gets the pets hygiene stat
-    * @return hygiene the hygiene stat
+    * Gets the pet's hygiene stat.
+    * @return The pet's hygiene level.
     */
     public Float getHygene() {
         return this.hygene;
@@ -115,8 +115,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Sets the pets hygiene stat
-    * @param hygiene the hygiene stat
+    * Sets the pet's hygiene stat.
+    * @param hygiene The updated hygiene stat.
     */
     public void setHygene(Float hygene) {
         this.hygene = hygene;
@@ -124,8 +124,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Gets the pets happiness stat
-    * @return happiness the happiness stat
+    * Gets the pet's happiness level.
+    * @return The pet's happiness level.
     */
     public Float getHappiness() {
         return this.happiness;
@@ -133,8 +133,8 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Sets the pets happiness stat
-    * @param happiness the happiness stat
+    * Sets the pet's happiness stat.
+    * @param happiness The pet's happiness level.
     */
     public void setHappiness(Float happiness) {
         this.happiness = happiness;
@@ -146,7 +146,7 @@ public class Pet extends JPanel {
     
     /**
     * @generated
-    * Increases the pets happiness stat by 1 
+    * Increases the pet's happiness stat by 1 .
     */
     protected void playWithPet() {
 	this.setHappiness(this.getHappiness() + 1);	
@@ -154,7 +154,7 @@ public class Pet extends JPanel {
 
     /**
     * @generated
-    * Increases the pets hygiene stat by 1
+    * Increases the pet's hygiene stat by 1.
     */
     protected void cleanPet() {
 	this.setHygene(this.getHygene() + 1);
@@ -162,7 +162,7 @@ public class Pet extends JPanel {
 
     /**
     * @generated
-    * Increases the pets hunger stat by 1
+    * Increases the pet's hunger stat by 1.
     */
     protected void feedPet() {
 	this.setHunger(this.getHunger() + 1);
@@ -170,24 +170,25 @@ public class Pet extends JPanel {
 
     /**
     * @generated
-    * Increases the pets skill stat by 1
+    * Increases the pet's skill stat by 1.
     */
     protected void upSkill() {
 	this.setSkill(this.getSkill() +1);
     }
  
-    /*
-    * Sets the timeSpeed values
-    * @param timeSpeed the timeSpeed value
-    */
+
+    /**
+     * Sets the time speed of the game.
+     * @param timeSpeed The updated time speed of the game.
+     */
     public void setTimeSpeed(float timeSpeed) {
         this.timeSpeed = timeSpeed;
     }
 
-    /*
-    * Gets the timeSpeed value
-    * @return timeSpeed the timeSpeed
-    */
+    /**
+     * Gets the value for the speed of the game.
+     * @return The time speed of the game.
+     */
     public Float getTimeSpeed() {
         return this.timeSpeed;
     } 

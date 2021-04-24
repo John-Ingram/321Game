@@ -1,14 +1,19 @@
+/**
+ * CS 321 - Final Project - Virtual Pet - Implementation
+ * @author Laurel Strelzoff, John Ingram, Bobby Tighe, Katie Weaver, Brandon Perry
+ */
+
 import java.awt.*;
-import java.io.ObjectInputFilter.Status;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
+/**
+ * Class that generates the layout.
+ */
 public class Renderer{
     
     //static variables
@@ -19,6 +24,9 @@ public class Renderer{
     private static StartMenu startMenu;
     private static JFrame frame;
 
+    /**
+     * Creates the basic panels.
+     */
     private static void createComponents()
     {
         startMenu = new StartMenu();
@@ -28,7 +36,7 @@ public class Renderer{
     }
 
     /**
-     * Resets the screen to it's main state.
+     * Resets the screen to its main state.
      */
     public static void resetMain()
     {
@@ -37,6 +45,10 @@ public class Renderer{
         frame.pack();
     }
 
+    /**
+     * Adds an overall layout to each JFrame that is called.
+     * @param frame the JFrame that is being modified.
+     */
     private static void addMainComponents(JFrame frame)
     {
         Container pane = frame.getContentPane();
@@ -63,8 +75,6 @@ public class Renderer{
         c.gridx = 1;
         c.gridy = 0;
         pane.add(sMenu, c);
-
-
 
         JButton exitButton = new JButton("Exit");
         exitButton.addActionListener( 
@@ -94,6 +104,10 @@ public class Renderer{
         pane.add(exitButton, c);
     }
     
+    /**
+     * Modifies the exit menu.
+     * @param frame The JFrame that is being modified.
+     */
     private static void showStart(JFrame frame)
     {
         Container pane = frame.getContentPane();
@@ -114,6 +128,9 @@ public class Renderer{
 
     }
 
+    /**
+     * Sets up content for each frame.
+     */
     private static void createAndShow()
     {   
         //Set up the content of the window
@@ -131,7 +148,10 @@ public class Renderer{
         frame.setVisible(true);
     }
 
-
+    /**
+     * The main class that is running the game.
+     * @param args
+     */
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {

@@ -1,3 +1,8 @@
+/**
+ * CS 321 - Final Project - Virtual Pet - Implementation
+ * @author Laurel Strelzoff, John Ingram, Bobby Tighe, Katie Weaver, Brandon Perry
+ */
+
 // attribution
 // <a href="https://www.vecteezy.com/free-vector/dog">Dog Vectors by Vecteezy</a>
 
@@ -16,23 +21,22 @@ import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import java.util.Date;
 
-
-// TODO: Javadoc comments
-// TODO: Update the button images and pet with better art.
-// TODO: Update the background.
 
 @SuppressWarnings("serial")
+/**
+ * Creates the Main Menu panel.
+ */
 public class MainMenu extends JPanel{
 
     private BufferedImage image; 
-
     private Pet pet;
-    private final Date createdDate = new java.util.Date();
 
+    /**
+     * Creates the Main Menu panel.
+     * @param pet The pet object which is being displayed and interacted with.
+     */
     public MainMenu(Pet pet) {
 	    this.pet = pet;
         setBackground(Color.WHITE);
@@ -42,9 +46,10 @@ public class MainMenu extends JPanel{
         createControls(picLabel);
     }
 
+    /**
+     * Creates the controls for the game that allow the user to interact with the pet.
+     */
     public void createControls(JLabel picLabel){
-        // TODO: Integrate the pet's needs with the buttons. Pet class has to be done first.
-
         JButton Feed = new JButton("Feed");
         Feed.addActionListener(
             new ActionListener(){
@@ -96,8 +101,6 @@ public class MainMenu extends JPanel{
         Skill.setBorderPainted(false);
         Skill.setBackground(new Color(0xEE9458));
 
-
-        // TODO: Make these buttons actually change the time speed. Pet class has to be done first.
         JButton one = new JButton("1x");
         one.addActionListener(
             new ActionListener(){
@@ -160,6 +163,10 @@ public class MainMenu extends JPanel{
         
     } 
 
+    /**
+     * Inserts the image for the main menu page.
+     * @return The image embedded into the main menu page.
+     */
     public JLabel PetImage(){
 
         try {
@@ -181,6 +188,9 @@ public class MainMenu extends JPanel{
     }
     
     @Override
+     /**
+     * Sets the size of the game.
+     */
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
     }
