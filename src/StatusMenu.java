@@ -12,6 +12,9 @@ import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.lang.Math;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 @SuppressWarnings("serial")
@@ -71,14 +74,17 @@ public class StatusMenu extends JPanel{
 		// updates previous time for future calculations
 		previousUpdateTime = System.currentTimeMillis();
 
-		// game loop
-		ActionListener updater = new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				updateStatus(timer);
-			}
-		};
-		timer = new Timer(100, updater);
-		timer.start();
+		// Updates the status of the pet every $countDownTimeMS milliseconds
+
+		TimerTask t = new TimerTask(){
+				@Override
+				public void run(){
+					updateStatus();
+				}
+			};
+
+		Timer timer = new Timer();
+		timer.schedule(t,0l,countDownTimeMS);
 
 
 		// writes out stats of pet
