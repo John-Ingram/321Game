@@ -1,2 +1,22 @@
-# 321Game
- We plan to create a game that is similar to Tamagotchi or Pou. These are virtual pet games, where you care for a digital animal. Typically, caring for digital animals in this type of game includes feeding, cleaning up after them, or teaching them various skills. At any point, the user can check the status of the animal, such as their age, happiness level, hunger, and body dimensions. The objective of this game is for the user to have fun keeping their animal alive. The impetus to continue playing is that your virtual pet will eventually die if neglected.   The problem domain of our software is storing the stats of the virtual pet, allowing the user to interface with the virtual pet, and changing the pet’s stats based on actions (or inactions) made by the user. Our software will be a solution to these problems by storing the pet’s properties, and as an object, allowing user input to change these object’s properties, and creating a GUI that interfaces with the petobject.   If any additional time is available, it will be used to enhance the solutions to our problem domain. For example, our group could make more engaging artwork for the GUI, add extra activities to do with the pet, or even add multiple pets. However, these enhancements will be added based on available time or difficulty and are subject to change. The ultimate goal is to find a solution to our problem domain.  The user’s perspective will begin with the creation of the pet. At this point, information will be presented on the pet’s gender, birthday, and general status. After that, the user will be able to check this information at any time. The user will also be able to perform actions with the pet, such as feeding.
+# Virtual Pet
+Welcome to the Virtual Pet GitHub, this game was created as a school project for a UAH CS321 Class.
+
+## How to compile:
+1. Ensure Java JDK is installed and on the PATH variable
+2. In Terminal or Windows PowerShell run build.sh
+
+## To execute:
+1. Ensure the project has been compiled
+2. Run Renderer.class using Java
+
+# Version:
+This project was fully tested using the following Java version:
+
+openjdk 14.0.2 2020-07-14
+
+OpenJDK Runtime Environment (build 14.0.2+12-Ubuntu-120.04)
+
+OpenJDK 64-Bit Server VM (build 14.0.2+12-Ubuntu-120.04, mixed mode, sharing)
+
+(Although I didn't have any issues in Java SE JDK 16.0.1 on Windows either)
+

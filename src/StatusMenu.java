@@ -1,33 +1,41 @@
+/**
+ * CS 321 - Final Project - Virtual Pet - Implementation
+ * @author Laurel Strelzoff, John Ingram, Bobby Tighe, Katie Weaver, Brandon Perry
+ */
+
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
+import javax.swing.Timer;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.lang.Math;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-// TODO: Javadoc comments
 
 @SuppressWarnings("serial")
-// class that creates the status menu
-public class statusMenu extends JPanel{
-    // TODO: Create a template for what the panel will look like
+/**
+ * Class that creates the Status menu panel.
+ */
+public class StatusMenu extends JPanel{
 
-	// varaibles and initialization
-	private final Date createdDate = new java.util.Date();
+	// variables and initialization
     private JLabel happiness, hygene, hunger, skill;
-    private Pet pet;
+	private Pet pet;
+	private Timer timer;
 
 	long countDownTimeMS = 5*1000;
 	long previousUpdateTime = 0;
-    
+	
 	/*
 	* Creates the status menu for the pets stats
 	* @param pet the pet of class Pet
 	*/
-    public statusMenu(Pet pet) {
+    public StatusMenu(Pet pet) {
 		this.pet = pet;
 
 		setBackground(Color.PINK);
@@ -78,13 +86,15 @@ public class statusMenu extends JPanel{
 		Timer timer = new Timer();
 		timer.schedule(t,0l,countDownTimeMS);
 
+
+		// writes out stats of pet
+		updateStatus(timer);
     }
 
 	/*
-	* Updates the stats of the pet in the status menu
-	* Takes into account the decay of the values over time 
+	* Updates the stats of the pet in the status menu and takes into account the decay of the values over time 
 	*/
-    public void updateStatus(){
+    private void updateStatus(Timer timer){
 		
 		// finds elapsed time
 		long elapsedTimeMS = System.currentTimeMillis() - previousUpdateTime;
@@ -92,8 +102,8 @@ public class statusMenu extends JPanel{
 		float counter = 0;
 		
 		// sets pet stats to decayed values if enough time has passed
-		if (elapsedTimeMS >= (countDownTimeMS * pet.getTimeSpeed())){
-			counter = (float)Math.floor(elapsedTimeMS / (countDownTimeMS * pet.getTimeSpeed()));
+		if (elapsedTimeMS >= (countDownTimeMS / pet.getTimeSpeed())){
+			counter = (float)Math.floor(elapsedTimeMS / (countDownTimeMS / pet.getTimeSpeed()));
 			pet.setHappiness(pet.getHappiness() - counter);
 			pet.setHygene(pet.getHygene() - counter);
 			pet.setHunger(pet.getHunger() - counter);
@@ -104,12 +114,47 @@ public class statusMenu extends JPanel{
 
 		// prints out pets stats
 		happiness.setText("Happiness: " + pet.getHappiness());
-		hygene.setText("Hygene: " + pet.getHygene());
+		hygene.setText("Hygiene: " + pet.getHygene());
 		hunger.setText("Hunger: " + pet.getHunger());
 		skill.setText("Skill: " + pet.getSkill());
+
+		// Handle loss
+		if (pet.getHappiness() < 1) lossHandler(timer, "unhappy");
+		if (pet.getHygene() < 1) lossHandler(timer, "dirty");
+		if (pet.getHunger() < 1) lossHandler(timer, "hungry");
+		if (pet.getSkill() < 1) lossHandler(timer, "horribly trained");
+
+	}
+
+	/**
+	 * Sends the loss message, and stops the game
+	 * @param timer
+	 * @param value
+	 * @param message
+	 */
+	private void lossHandler(Timer timer, String message)
+	{
+		clearStatText();
+		happiness.setText("Your pet was so "+ message);
+		hygene.setText("that animal services had to take it!");
+		timer.stop();
+	}
+
+	/**
+	 * Clears the Stat Text so a loss message can be displayed.
+	 */
+	private void clearStatText()
+	{
+		happiness.setText("");
+		hygene.setText("");
+		hunger.setText("");
+		skill.setText("");
 	}
 	
     @Override
+	 /**
+     * Sets the size of the game.
+     */
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
     }

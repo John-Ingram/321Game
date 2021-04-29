@@ -1,9 +1,12 @@
+/**
+ * CS 321 - Final Project - Virtual Pet - Implementation
+ * @author Laurel Strelzoff, John Ingram, Bobby Tighe, Katie Weaver, Brandon Perry
+ */
 // attribution
 // <a href="https://www.vecteezy.com/free-vector/dog">Dog Vectors by Vecteezy</a>
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,19 +22,21 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-// TODO: Javadoc comments
-
 @SuppressWarnings("serial")
-public class exitMenu extends JPanel {
+/**
+ * Creates the exit menu panel.
+ */
+public class ExitMenu extends JPanel {
 
     private BufferedImage image; 
 
-    public exitMenu() {
+    /**
+     * Creates the exit menu's layout.
+     */
+    public ExitMenu() {
         setBackground(new Color(0xA3D8C8));
         add(new JLabel("Are you sure you want to exit?"));
 
-
-        // TODO: Make this button actually work
         JButton Yes = new JButton("YES");
         Yes.addActionListener(
             new ActionListener(){
@@ -44,6 +49,19 @@ public class exitMenu extends JPanel {
         Yes.setBackground(new Color(0xA55536));
         Yes.setForeground(new Color(0xFEFEFE));
         add(Yes);
+        
+        JButton No = new JButton("NO");
+        No.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+		        Renderer.resetMain(); 
+                }
+            }
+        );
+        No.setBorderPainted(false);
+        No.setBackground(new Color(0xA55536));
+        No.setForeground(new Color(0xFEFEFE));
+        add(No);
 
         JLabel picLabel = PetImage();
         JPanel pet = new JPanel();
@@ -53,10 +71,14 @@ public class exitMenu extends JPanel {
         
     }
 
+    /**
+     * Inserts the image for the exit page.
+     * @return The image embedded into the exit page.
+     */
     public JLabel PetImage(){
 
         try {
-            image = ImageIO.read(new File("resources/shocked_dog.png"));
+            image = ImageIO.read(new File("../resources/shocked_dog.png"));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
@@ -72,7 +94,10 @@ public class exitMenu extends JPanel {
     }
     
     @Override
+     /**
+     * Sets the size of the game.
+     */
     public Dimension getPreferredSize() {
-        return new Dimension(300, 300);
+        return new Dimension(600, 300);
     }
 }

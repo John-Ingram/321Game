@@ -1,3 +1,8 @@
+/**
+ * CS 321 - Final Project - Virtual Pet - Implementation
+ * @author Laurel Strelzoff, John Ingram, Bobby Tighe, Katie Weaver, Brandon Perry
+ */
+
 // attribution
 // <a href="https://www.vecteezy.com/free-vector/dog">Dog Vectors by Vecteezy</a>
 
@@ -12,44 +17,48 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import java.util.Date;
 
-
-// TODO: Javadoc comments
-// TODO: Update the button images and pet with better art.
-// TODO: Update the background.
 
 @SuppressWarnings("serial")
-public class mainMenu extends JPanel{
+/**
+ * Creates the Main Menu panel.
+ */
+public class MainMenu extends JPanel{
 
     private BufferedImage image; 
-
     private Pet pet;
-    private final Date createdDate = new java.util.Date();
+	private Timer timer;
 
-    public mainMenu(Pet pet) {
+
+    /**
+     * Creates the Main Menu panel.
+     * @param pet The pet object which is being displayed and interacted with.
+     */
+    public MainMenu(Pet pet) {
 	    this.pet = pet;
         setBackground(Color.WHITE);
         add(new JLabel("Main Menu"));
         
-        JLabel picLabel = PetImage();
-        createControls(picLabel);
+        JLabel picLabel = PetImage("../resources/dog.png");
+        JLabel lossLabel = PetImage("../resources/shocked_dog.png");
+        createControls(picLabel, lossLabel);
     }
 
-    public void createControls(JLabel picLabel){
-        // TODO: Integrate the pet's needs with the buttons. Pet class has to be done first.
-
+    /**
+     * Creates the controls for the game that allow the user to interact with the pet.
+     */
+    public void createControls(JLabel picLabel, JLabel lossLabel){
         JButton Feed = new JButton("Feed");
         Feed.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-		    pet.feedPet();
+		            pet.feedPet();
                 }
             }
         );
@@ -62,7 +71,7 @@ public class mainMenu extends JPanel{
         Clean.addActionListener(
             new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-		    pet.cleanPet(); 
+		            pet.cleanPet(); 
                 }
             }
         );
@@ -96,8 +105,6 @@ public class mainMenu extends JPanel{
         Skill.setBorderPainted(false);
         Skill.setBackground(new Color(0xEE9458));
 
-
-        // TODO: Make these buttons actually change the time speed. Pet class has to be done first.
         JButton one = new JButton("1x");
         one.addActionListener(
             new ActionListener(){
@@ -153,22 +160,42 @@ public class mainMenu extends JPanel{
         time.add(two);
         add(time, BorderLayout.SOUTH);
 
-        JPanel pet = new JPanel();
-        pet.add(picLabel);
-        pet.setBackground(new Color(0xA3D8C8));
-        add(pet, BorderLayout.CENTER);
+        JPanel petPic = new JPanel();
+        petPic.add(picLabel);
+        petPic.setBackground(new Color(0xA3D8C8));
+        add(petPic, BorderLayout.CENTER);
+
+        // Make dog sad on loss
+        ActionListener updater = new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+                if (pet.getHappiness() < 1 || pet.getHygene() < 1 ||
+                    pet.getHunger() < 1 || pet.getSkill()  < 1 ) {
+                    remove(petPic);
+                    JPanel petPic = new JPanel();
+                    petPic.add(lossLabel);
+                    petPic.setBackground(new Color(0xA3D8C8));
+                    add(petPic, BorderLayout.CENTER);
+                    needs.revalidate();
+                    needs.repaint();
+                }
+			}
+		};
+		timer = new Timer(100, updater);
+		timer.start();
         
     } 
 
-    public JLabel PetImage(){
+    /**
+     * Inserts the image for the main menu page.
+     * @return The image embedded into the main menu page.
+     */
+    public JLabel PetImage(String path){
 
         try {
-            image = ImageIO.read(new File("resources/dog.png"));
+            image = ImageIO.read(new File(path));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-
-        // TODO: Resize image outside of program and update the resource image so we can avoid resizing in the program.
 
         ImageIcon icon = new ImageIcon(image);
         Image image = icon.getImage();
@@ -179,8 +206,13 @@ public class mainMenu extends JPanel{
         return picLabel;
        
     }
+
+    
     
     @Override
+     /**
+     * Sets the size of the game.
+     */
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
     }
